@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_14_213229) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_14_214928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,5 +30,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_213229) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "minutes", null: false
+    t.date "completed_at"
+    t.bigint "member_id"
+    t.bigint "pal_id"
+    t.index ["completed_at"], name: "index_visits_on_completed_at"
+    t.index ["member_id"], name: "index_visits_on_member_id"
+    t.index ["pal_id"], name: "index_visits_on_pal_id"
+  end
+
   add_foreign_key "accounts", "users"
+  add_foreign_key "visits", "users", column: "member_id"
+  add_foreign_key "visits", "users", column: "pal_id"
 end
