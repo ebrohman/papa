@@ -15,6 +15,12 @@ gem 'pg', '~> 1.4', '>= 1.4.6'
 # Bcrypt 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
+# Rspec
+gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+
+# API documentation
+gem 'apipie-rails', '~> 0.9.4'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -42,6 +48,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  # Rspec
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do
