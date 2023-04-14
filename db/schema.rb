@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_14_221830) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_14_222108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_221830) do
 
   create_table "roles", force: :cascade do |t|
     t.integer "name", default: 0, null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "user_id"
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,6 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_221830) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
   add_foreign_key "visits", "users", column: "member_id"
   add_foreign_key "visits", "users", column: "pal_id"
 end
