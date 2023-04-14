@@ -11,6 +11,10 @@ gem "puma", "~> 5.0"
 
 # Postgres
 gem 'pg', '~> 1.4', '>= 1.4.6'
+
+# Bcrypt 
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
