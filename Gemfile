@@ -47,6 +47,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   # Rspec
   gem 'rspec-rails', '~> 4.0.1'
+  # Linting
+  gem 'rubocop-rails', '~> 2.19'
 end
 
 group :development do
