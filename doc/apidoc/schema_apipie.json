@@ -1,0 +1,109 @@
+{
+  "docs": {
+    "name": "Papa",
+    "info": "\n<p>Another API description</p>\n",
+    "copyright": null,
+    "doc_url": "/apipie/1.0",
+    "api_url": "/api",
+    "resources": {
+      "authentication": {
+        "doc_url": "/apipie/1.0/authentication",
+        "id": "authentication",
+        "api_url": "/api",
+        "name": "Authentication",
+        "short_description": null,
+        "full_description": "",
+        "version": "1.0",
+        "formats": null,
+        "metadata": null,
+        "methods": [
+          {
+            "doc_url": "/apipie/1.0/authentication/login",
+            "name": "login",
+            "apis": [
+              {
+                "api_url": "/api/login",
+                "http_method": "POST",
+                "short_description": null,
+                "deprecated": null
+              }
+            ],
+            "formats": null,
+            "full_description": "",
+            "errors": [
+
+            ],
+            "params": [
+
+            ],
+            "returns": [
+
+            ],
+            "examples": [
+
+            ],
+            "metadata": null,
+            "see": [
+
+            ],
+            "headers": [
+
+            ],
+            "show": true
+          }
+        ],
+        "headers": null,
+        "deprecated": null
+      },
+      "users": {
+        "doc_url": "/apipie/1.0/users",
+        "id": "users",
+        "api_url": "/api",
+        "name": "Users",
+        "short_description": null,
+        "full_description": "",
+        "version": "1.0",
+        "formats": null,
+        "metadata": null,
+        "methods": [
+          {
+            "doc_url": "/apipie/1.0/users/create",
+            "name": "create",
+            "apis": [
+              {
+                "api_url": "/api/users",
+                "http_method": "POST",
+                "short_description": null,
+                "deprecated": null
+              }
+            ],
+            "formats": null,
+            "full_description": "",
+            "errors": [
+
+            ],
+            "params": [
+
+            ],
+            "returns": [
+
+            ],
+            "examples": [
+
+            ],
+            "metadata": null,
+            "see": [
+
+            ],
+            "headers": [
+
+            ],
+            "show": true
+          }
+        ],
+        "headers": null,
+        "deprecated": null
+      }
+    }
+  }
+}
