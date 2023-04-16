@@ -3,4 +3,5 @@
 Rails.application.routes.draw do
   apipie
   resource :users
+  resource :visits
 end
