@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'POST - /visits' do
+RSpec.describe 'POST - /v1/visits' do
   let(:headers) { { 'Content-Type' => 'application/json' } }
 
   describe 'creating a new visit' do

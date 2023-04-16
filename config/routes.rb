@@ -2,6 +2,9 @@
 
 Rails.application.routes.draw do
   apipie
-  resource :users
-  resource :visits
+
+  namespace :v1, as: '' do
+    resource :users
+    resource :visits
+  end
 end

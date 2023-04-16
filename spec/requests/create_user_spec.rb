@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'POST - /users', type: :request do
+RSpec.describe 'POST - /v1/users', type: :request do
   let(:headers) { { 'Content-Type' => 'application/json' } }
 
   describe 'creating a user' do
