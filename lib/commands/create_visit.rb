@@ -3,31 +3,21 @@
 module Commands
   class CreateVisit
     def self.call(params)
-      new(params).create_visit
+      new(params).call
     end
 
-    attr_accessor :message, :status
+    attr_accessor :message, :status, :member
     attr_reader :params
 
     def initialize(params)
       @params = params
     end
 
-    def create_visit
-      date = validate_date!
-      member_id = find_member_id
-      minutes = params[:minutes]
-      rate = params[:rate]
-      visit = Visit.new(date:, member_id:, minutes:, rate:)
-
-      if visit.save
-        @message = visit
-        @status = :created
-      else
-        @message = visit.errors.full_messages
-        @status = :unprocessable_entity
-      end
-
+    def call
+      validate_date!
+      find_member!
+      validate_member_account_balance!
+      create_visit
       self
     rescue ActiveRecord::RecordNotFound => e
       @message = e.message
@@ -39,15 +29,37 @@ module Commands
       self
     end
 
-    def find_member_id
-      User.find(params[:member_id]).id
+    def create_visit
+      visit = Visit.new(date: params[:date],
+                        member_id: member.id,
+                        minutes: params[:minutes],
+                        rate: params[:rate])
+
+      if visit.save
+        @message = visit
+        @status = :created
+      else
+        @message = visit.errors.full_messages
+        @status = :unprocessable_entity
+      end
+
+      self
+    end
+
+    private
+
+    def validate_member_account_balance!
+      raise 'Not enough credit to request a visit' unless \
+        member.account && member.account.balance >= (params[:minutes] * params[:rate])
+    end
+
+    def find_member!
+      @member = User.find(params[:member_id])
     end
 
     def validate_date!
       date = DateTime.parse(params[:date])
       raise 'date is in the past' unless date.future?
-
-      date
     end
   end
 end
