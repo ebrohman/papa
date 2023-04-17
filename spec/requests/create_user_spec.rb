@@ -11,10 +11,9 @@ RSpec.describe 'POST - /v1/users', type: :request do
            params: {
              email: 'foo@bar.com',
              first_name: 'Dan',
-             last_name: 'Smith',
-             role_name: 'member'
+             last_name: 'Smith'
            }.to_json,
-           headers:)
+           headers: headers)
 
       expect(response).to have_http_status(:created), -> { response.body }
 
@@ -26,14 +25,31 @@ RSpec.describe 'POST - /v1/users', type: :request do
         post(users_path,
              params: {
                first_name: 'Dan',
-               last_name: 'Smith',
-               role_name: 'member'
+               last_name: 'Smith'
              }.to_json,
-             headers:)
+             headers: headers)
 
         expect(response).to have_http_status(:unprocessable_entity)
 
         expect(response.body).to match(/Missing parameter email/)
+      end
+    end
+
+    context 'when an email is already taken' do
+      it 'returns a helpful message' do
+        User.create(email: 'james@foo.com')
+
+        post(users_path,
+             params: {
+               first_name: 'Dan',
+               last_name: 'Smith',
+               email: 'james@foo.com'
+             }.to_json,
+             headers: headers)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+
+        expect(response.body).to match(/Email has already been taken/)
       end
     end
   end
