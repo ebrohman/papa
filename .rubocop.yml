@@ -1,0 +1,4 @@
+require: rubocop-rails
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
