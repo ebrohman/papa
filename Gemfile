@@ -45,6 +45,8 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.19'
   # API documentation
   gem 'apipie-rails', '~> 0.9.4'
+  # Preloader
+  gem 'spring', '~> 1.7', '>= 1.7.2'
 end
 
 group :development do
