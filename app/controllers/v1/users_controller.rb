@@ -2,23 +2,24 @@
 
 module V1
   class UsersController < ApplicationController
+    rescue_from Apipie::ParamError do |e|
+      render json: e.message, status: :unprocessable_entity
+    end
+
+    api :GET, '/v1/users', 'Get a list of users'
+
+    def index
+      render json: User.all
+    end
+
     api :POST, '/v1/users', 'Create a new user'
     param :email, String, required: true
     param :first_name, String
     param :last_name, String
 
-    rescue_from Apipie::ParamError do |e|
-      render json: e.message, status: :unprocessable_entity
-    end
-
     def create
-      user = User.new(user_params)
-
-      if user.save
-        render json: user, status: :created
-      else
-        render json: { errors: user.errors.full_messages },
-               status: :unprocessable_entity
+      Commands::CreateUser.call(user_params).then do |result|
+        render json: result.message, status: result.status
       end
     end
 
