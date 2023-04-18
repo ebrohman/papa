@@ -15,6 +15,7 @@ module Commands
 
     def call
       user = User.new(params)
+      user.build_account
 
       if user.save
         @message = user
