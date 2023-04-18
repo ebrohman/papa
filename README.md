@@ -39,5 +39,7 @@
 
 * API documentation
   - I have used code as documentation that can be viewed at `localhost:3000/apipie`
+  - <img width="794" alt="image" src="https://user-images.githubusercontent.com/5577425/232812254-d2fb4705-1146-4de2-8485-8a31f7f9a526.png">
+
 
 
