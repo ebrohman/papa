@@ -8,11 +8,11 @@ module V1
       render json: Visit.unfulfilled
     end
 
+    api :GET, '/v1/visits/fulfilled', 'List fulfilled visits'
+
     def fulfilled
       render json: Visit.fulfilled
     end
-
-    api :GET, '/v1/visits/fulfilled', 'List fulfilled visits'
 
     api :POST, '/v1/visits', 'Create a new visit'
     param :member_id, Integer, required: true
