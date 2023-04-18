@@ -5,6 +5,7 @@
 
 * Setup
   - install ruby 3.2.0 with whatever version manager you like. I use `rvm`; if it's too much trouble you can change the .ruby-version to whatever binary you have installed.
+  - The data store is postgres so you will need to have that installed and running locally
   - In the application directory run `bundle install` to install dependencies
   - Create the database:
     - `bundle exec rails db:create`
