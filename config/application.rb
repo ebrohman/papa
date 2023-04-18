@@ -25,5 +25,7 @@ module Papa
     config.api_only = true
 
     config.eager_load_paths << Rails.root.join('lib')
+
+    config.overhead_fee = ENV.fetch('OVERHEAD_FEE', 0.15).to_f
   end
 end

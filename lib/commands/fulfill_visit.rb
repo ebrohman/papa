@@ -43,8 +43,12 @@ module Commands
         member_balance = member.account.balance
         member.account.update!(balance: member_balance - visit.cost)
 
-        # take out 15%
-        pal_credit = visit.cost * 0.85
+        # Load fee from config
+        fee = Rails.application.config.overhead_fee
+        # take out fee
+        overhead_fee = visit.cost * fee
+        # determine pal credit
+        pal_credit = visit.cost - overhead_fee
         # credit the pal
         pal_balance = pal.account.balance
         pal.account.update!(balance: pal_balance + pal_credit)
